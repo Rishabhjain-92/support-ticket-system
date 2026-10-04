@@ -1,0 +1,58 @@
+// Prisma schema definition for Support Ticket Management System
+// Optimized for O(1) single-record lookups and O(log N) indexed queries, sorting, and aggregations.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Enums matching assignment specifications
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+model Ticket {
+  id            String         @id @default(uuid())
+  title         String         @db.VarChar(120)
+  description   String         @db.Text
+  customerEmail String         @map("customer_email") @db.VarChar(255)
+  priority      TicketPriority @default(MEDIUM)
+  status        TicketStatus   @default(OPEN)
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt @map("updated_at")
+
+  // Indexes strategically added for O(log N) search, filter, sort, and aggregation performance:
+  // 1. Single index on status enables Index-Only Scans for instant global summary counts (COUNT GROUP BY status).
+  @@index([status], name: "idx_tickets_status")
+
+  // 2. Single index on priority for direct priority filtering.
+  @@index([priority], name: "idx_tickets_priority")
+
+  // 3. Single index on createdAt for sorting unfiltered lists.
+  @@index([createdAt(sort: Desc)], name: "idx_tickets_created_at")
+
+  // 4. Index on customerEmail for fast email lookup.
+  @@index([customerEmail], name: "idx_tickets_customer_email")
+
+  // 5. Compound index for status filtering + sorting by creation date (eliminates Sort/TempDB spill).
+  @@index([status, createdAt(sort: Desc)], name: "idx_tickets_status_created_at")
+
+  // 6. Compound index for priority filtering + sorting by creation date.
+  @@index([priority, createdAt(sort: Desc)], name: "idx_tickets_priority_created_at")
+
+  // 7. Compound index for combined status & priority filtering + sorting.
+  @@index([status, priority, createdAt(sort: Desc)], name: "idx_tickets_status_priority_created_at")
+
+  @@map("tickets")
+}
