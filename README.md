@@ -57,57 +57,55 @@ support-ticket-system/
 ├── backend/
 │   ├── prisma/
 │   │   ├── schema.prisma           # Prisma schema with enums & indexes
-│   │   └── seed.ts                 # Seeding script with 30 realistic tickets
+│   │   └── seed.js                 # Seeding script with 30 realistic tickets
 │   ├── src/
 │   │   ├── controllers/
-│   │   │   └── ticket.controller.ts # Request/response orchestration
+│   │   │   └── ticket.controller.js # Request/response orchestration
 │   │   ├── services/
-│   │   │   └── ticket.service.ts   # Database logic & query optimizations
+│   │   │   └── ticket.service.js   # Database logic & query optimizations
 │   │   ├── validators/
-│   │   │   └── ticket.validator.ts # Backend Zod validation schemas
+│   │   │   └── ticket.validator.js # Backend Zod validation schemas
 │   │   ├── middlewares/
-│   │   │   ├── error.middleware.ts # Global error boundary & 404 handler
-│   │   │   ├── validate.middleware.ts # Zod request validation middleware
-│   │   │   └── request-logger.middleware.ts # X-Request-ID & timing headers
+│   │   │   ├── error.middleware.js # Global error boundary & 404 handler
+│   │   │   ├── validate.middleware.js # Zod request validation middleware
+│   │   │   └── request-logger.middleware.js # X-Request-ID & timing headers
 │   │   ├── utils/
-│   │   │   ├── api-response.ts     # Standardized JSON response envelope
-│   │   │   └── app-error.ts        # Typed operational AppError classes
+│   │   │   ├── api-response.js     # Standardized JSON response envelope
+│   │   │   └── app-error.js        # Operational AppError classes
 │   │   ├── routes/
-│   │   │   ├── index.ts            # API root router & healthcheck
-│   │   │   └── ticket.routes.ts    # Resource endpoints
-│   │   ├── app.ts                  # Express app setup
-│   │   └── server.ts               # HTTP listener with graceful shutdown
+│   │   │   ├── index.js            # API root router & healthcheck
+│   │   │   └── ticket.routes.js    # Resource endpoints
+│   │   ├── app.js                  # Express app setup
+│   │   └── server.js               # HTTP listener with graceful shutdown
 │   ├── tests/
-│   │   └── ticket.test.ts          # Automated integration test suite
-│   ├── prisma.config.ts
+│   │   └── ticket.test.js          # Automated integration test suite
+│   ├── prisma.config.js
 │   └── package.json
 └── frontend/
     ├── src/
     │   ├── api/
-    │   │   ├── client.ts           # Axios instance with request/response middlewares
-    │   │   └── ticket.api.ts       # Typed backend service calls
+    │   │   ├── client.js           # Axios instance with request/response middlewares
+    │   │   └── ticket.api.js       # Typed backend service calls
     │   ├── components/
-    │   │   ├── Header.tsx          # App navbar with New Ticket action
-    │   │   ├── SummaryCards.tsx    # 4 global count cards (Total, Open, In Progress, Resolved)
-    │   │   ├── FilterToolbar.tsx   # Search, status, priority, and sort controls
-    │   │   ├── TicketTable.tsx     # Responsive desktop table and mobile cards
-    │   │   ├── Pagination.tsx      # 10 tickets per page controls
-    │   │   ├── CreateTicketModal.tsx # New ticket modal with Zod form validation
-    │   │   ├── TicketDetailModal.tsx # View details & update status/priority
-    │   │   ├── StatusBadge.tsx     # Colored status indicators
-    │   │   ├── PriorityBadge.tsx   # Severity-based priority indicators
-    │   │   ├── ErrorBoundary.tsx   # Client render error boundary
-    │   │   └── SkeletonLoader.tsx  # Pulsing loading placeholders
+    │   │   ├── Header.jsx          # App navbar with New Ticket action
+    │   │   ├── SummaryCards.jsx    # 4 global count cards (Total, Open, In Progress, Resolved)
+    │   │   ├── FilterToolbar.jsx   # Search, status, priority, and sort controls
+    │   │   ├── TicketTable.jsx     # Responsive desktop table and mobile cards
+    │   │   ├── Pagination.jsx      # 10 tickets per page controls
+    │   │   ├── CreateTicketModal.jsx # New ticket modal with Zod form validation
+    │   │   ├── TicketDetailModal.jsx # View details & update status/priority
+    │   │   ├── StatusBadge.jsx     # Colored status indicators
+    │   │   ├── PriorityBadge.jsx   # Severity-based priority indicators
+    │   │   ├── ErrorBoundary.jsx   # Client render error boundary
+    │   │   └── SkeletonLoader.jsx  # Pulsing loading placeholders
     │   ├── hooks/
-    │   │   ├── useTickets.ts       # TanStack Query hooks with optimistic updates
-    │   │   └── useDebounce.ts      # 300ms search input throttling
+    │   │   ├── useTickets.js       # TanStack Query hooks with optimistic updates
+    │   │   └── useDebounce.js      # 300ms search input throttling
     │   ├── validators/
-    │   │   └── ticket.validator.ts # Frontend Zod validation schemas
-    │   ├── types/
-    │   │   └── ticket.ts           # Shared TypeScript domain contracts
-    │   ├── App.tsx                 # Root dashboard coordinator
-    │   └── main.tsx
-    ├── vite.config.ts              # Vite config with proxy & Tailwind v4
+    │   │   └── ticket.validator.js # Frontend Zod validation schemas
+    │   ├── App.jsx                 # Root dashboard coordinator
+    │   └── main.jsx
+    ├── vite.config.js              # Vite config with proxy & Tailwind v4
     └── package.json
 ```
 
