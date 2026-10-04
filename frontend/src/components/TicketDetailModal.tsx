@@ -86,7 +86,7 @@ export const TicketDetailModal: React.FC<TicketDetailModalProps> = ({ ticket, is
         {saveSuccess && (
           <div className="mx-6 mt-4 p-3 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-emerald-700 text-xs">
             <Check size={16} className="shrink-0 text-emerald-600" />
-            <span>Changes saved successfully and persisted in PostgreSQL database!</span>
+            <span>Changes saved successfully!</span>
           </div>
         )}
 

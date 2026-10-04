@@ -20,9 +20,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCreateModal }) => {
                 <h1 className="text-base font-bold text-slate-900 tracking-tight m-0">
                   Support Desk
                 </h1>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200/60">
-                  PostgreSQL · Prisma
-                </span>
               </div>
               <p className="text-xs text-slate-500 m-0">Customer Support Ticket Management</p>
             </div>
