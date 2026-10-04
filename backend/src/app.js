@@ -13,9 +13,15 @@ const app = express();
 
 // Security and request parsing middlewares
 app.use(helmet());
+const allowedOrigins = process.env.FRONTEND_URL
+  ? (process.env.FRONTEND_URL.includes(',')
+      ? process.env.FRONTEND_URL.split(',').map((u) => u.trim())
+      : process.env.FRONTEND_URL)
+  : '*';
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: allowedOrigins === '*' ? true : allowedOrigins,
     credentials: true,
   })
 );
