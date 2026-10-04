@@ -6,6 +6,19 @@ Designed with clean layered architecture, $O(1)$ and $O(\log N)$ query optimizat
 
 ---
 
+## 📸 Application Screenshots
+
+| Dashboard Overview & Global Stats | Ticket Queue & Pagination |
+| :---: | :---: |
+| ![Dashboard Overview](docs/screenshots/dashboard-overview.png) | ![Ticket Queue & Pagination](docs/screenshots/ticket-list-pagination.png) |
+
+<br />
+
+### ➕ Create Support Ticket Modal
+![Create Ticket Modal](docs/screenshots/create-ticket-modal.png)
+
+---
+
 ## 🚀 Tech Stack
 
 | Layer | Technology | Purpose |
@@ -211,15 +224,3 @@ npm test
 3. **Optimistic UI Updates:**
    - Updating ticket status or priority in the detail modal applies optimistically in the React Query cache, giving support agents an instant, responsive interface while changes persist asynchronously in PostgreSQL.
 
----
-
-## 🎯 Interview Readiness: Extending the Application
-
-During the follow-up interview, if asked to make changes:
-- **Adding a new field (e.g., `assignedAgent` or `category`):**
-  1. Add field to `backend/prisma/schema.prisma` $\rightarrow$ run `npx prisma db push`.
-  2. Add field to `backend/src/validators/ticket.validator.ts` and `frontend/src/validators/ticket.validator.ts`.
-  3. Include field in `TicketService.createTicket` / `TicketService.updateTicket` and display it in `TicketTable.tsx` / `TicketDetailModal.tsx`.
-- **Adding a new status (e.g., `PENDING_CUSTOMER`):**
-  1. Add value to `enum TicketStatus` in `schema.prisma`.
-  2. Add value to Zod enum and `StatusBadge.tsx`.
